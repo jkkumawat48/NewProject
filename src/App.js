@@ -8,14 +8,23 @@ import Error from './NewProject/Error';
 import List from './NewProject/List';
 import Footer from './NewProject/Footer'
 import LoginPage from "./NewProject/LoginPage";
-import { Switch,Route } from "react-router-dom";
+import { Switch,Route, useHistory } from "react-router-dom";
+import Login from "./NewProject/Context";
 const App=()=>{
+  const token = localStorage.getItem("token")
+  const history=useHistory()
+console.log(token)
+if(token){
+  history.push("/")
+}
   return(
     <>
-    <List/>
+  
+   { token ?
+   <>
+   <List/>
     <Switch>
-      {/* <Route path="/" component={LoginPage}/> */}
-      <Route path="/Home"component={Home}/>
+      <Route path="/"component={Home}/>
       <Route path="/about"component={About}/>
       <Route path="/services"component={Services}/>
       <Route path="/context"component={Context}/>
@@ -23,6 +32,9 @@ const App=()=>{
       <Route path="/Error" component={Error}/>
     </Switch>
     <Footer/>
+    </>: <LoginPage/>
+    }
+    
     </>
   )
 }
