@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+// import Home from './Home';
 const LoginPage=()=>{
 const history= useHistory();
 const[data,setData]=useState({name:"",email:"",password:""})
@@ -22,6 +23,7 @@ if(localStorage.getItem('user-info')){
     },[])
     return(
         <div>
+            {/* <Home/> */}
             <h1>Login Page</h1>
             <form onSubmit={(e)=>handlesubmit(e)}>
                 <div>
