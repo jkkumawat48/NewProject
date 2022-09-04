@@ -1,9 +1,27 @@
 import React from "react";
+
+import '../CSS/Service.css';
+import Card from './Card';
+import Data from './Data'
 function Services(){
     return(
-        <div>
-            <h1>Heelo Services</h1>
-        </div>
+       <> 
+            <h1 className="h1">Our Services</h1>
+            <div className="Service">
+                <Card/>
+{/* {
+ Data.map((value)=>{
+    return(
+        <Card 
+        title1={value.Stitle}
+        imgSource={value.imgsrc}
+        desc1={value.desc1}
+        btnServices={value.btnService}
+        />
+    )
+})} */}
+            </div>
+            </>
     )
 }
 export default Services;

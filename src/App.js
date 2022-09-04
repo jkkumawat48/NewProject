@@ -6,14 +6,16 @@ import Context from './NewProject/Context';
 import Policy from './NewProject/Policy';
 import Error from './NewProject/Error';
 import List from './NewProject/List';
-import Footer from './NewProject/Footer';
+import Footer from './NewProject/Footer'
+import LoginPage from "./NewProject/LoginPage";
 import { Switch,Route } from "react-router-dom";
 const App=()=>{
   return(
     <>
     <List/>
     <Switch>
-      <Route exact path="/"component={Home}/>
+      {/* <Route path="/" component={LoginPage}/> */}
+      <Route path="/Home"component={Home}/>
       <Route path="/about"component={About}/>
       <Route path="/services"component={Services}/>
       <Route path="/context"component={Context}/>

@@ -22,7 +22,7 @@ const Footer=()=>{
 </div>
 <div className="copyright">
 <p>All rights reserved &copy; </p>
-<p>Made by Love by khanam</p>
+<p>Made by Love by RJ</p>
 </div>
             </div>
         </footer>
