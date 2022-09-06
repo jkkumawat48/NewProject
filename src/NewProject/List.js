@@ -17,7 +17,7 @@ const List=()=>{
 <nav>
     <div className="list">
         {/* <NavLink to="/LoginPage" className="listItem" activeClassName="activeItem">LoginPage</NavLink> */}
-        <NavLink to="/Home" className="listItem" activeClassName="activeItem">Home</NavLink>
+        <NavLink exact to="/" className="listItem" activeClassName="activeItem">Home</NavLink>
         <NavLink to="/about"className="listItem" activeClassName="activeItem">About</NavLink>
         <NavLink to="/context"className="listItem" activeClassName="activeItem">Context</NavLink>
         <NavLink to="/policy"className="listItem" activeClassName="activeItem">Policy</NavLink>
@@ -26,7 +26,7 @@ const List=()=>{
 </nav>
 <div className="icon">
 <SearchIcon />
-<NavLink to="/LoginPage" className="listItem" activeClassName="activeItem">LoginPage</NavLink>
+{/* <NavLink to="/Log" className="listItem" activeClassName="activeItem">LoginPage</NavLink> */}
 <PermIdentityIcon/>
 <PhoneIcon/>
 

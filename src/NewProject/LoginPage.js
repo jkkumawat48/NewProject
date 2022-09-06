@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // import Home from './Home';
-const LoginPage=()=>{
+const LoginPage=({handleToken})=>{
 const history= useHistory();
 const[data,setData]=useState({name:"",email:"",password:""})
 const handleOnChange=(e)=>{
@@ -13,7 +13,7 @@ const handlesubmit=(e)=>{
     e.preventDefault();
     localStorage.setItem("token",data.name)
     setData({name:"",email:"",password:""})
-    console.log(data)
+   handleToken()
     
 }
     useEffect(()=>{
