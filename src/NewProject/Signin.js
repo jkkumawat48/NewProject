@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+// import {useNevigate} from "react-router-dom";
 const SignIn = () => {
   const history = useHistory();
   const [data, setData] = useState({ email: "", password: "" });
@@ -13,9 +14,11 @@ const SignIn = () => {
   };
   const handlesubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("token", data.name);
     setData({ email: "", password: "" });
-    // handleToken();
+
+    const getuserArr= localStorage.getItem("user you tube")
+    console.log(getuserArr)
+
     const { name, email, password } = data;
 
     if (email == "") {
@@ -26,9 +29,24 @@ const SignIn = () => {
       alert("password filed is required");
     } else if (password.length < 5) {
       alert("password length greater five");
+    }else{
+        if(getuserArr && getuserArr.length){
+            const userdata = JSON.parse(getuserArr)
+            const usersignin=userdata.filter((ele,k)=>{
+                return ele.email === email && ele.password === password
+            })
+            if(usersignin.length ===0){
+                alert("invalid details")
+            }else{
+                console.log("user login succesfully")
+localStorage.setItem("user_signin",JSON.stringify(getuserArr))
+
+                history("/details")
+            }
+            
+        }
     }
-    console.log("data added successfully");
-    localStorage.setItem("user you tube", JSON.stringify([...user, data]));
+    
   };
   return (
     <div className="container mt-3">
@@ -53,15 +71,16 @@ const SignIn = () => {
               onChange={(e) => handleOnChange(e)}
             />
             <button>Click</button>
-            <p className="mt-3">
+           
+          </div>
+        </form>
+        <div className="right_data">
+        <p className="mt-3">
               Already Have An Account
               <span>
                 SignIn
               </span>
             </p>
-          </div>
-        </form>
-        <div className="right_data">
           <div className="sign_img">
             <img src="./img1.jpeg" alt="" />
           </div>
