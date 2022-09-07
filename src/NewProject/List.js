@@ -22,7 +22,7 @@ const List=()=>{
         <NavLink to="/context"className="listItem" activeClassName="activeItem">Context</NavLink>
         <NavLink to="/policy"className="listItem" activeClassName="activeItem">Policy</NavLink>
         <NavLink to="/services"className="listItem" activeClassName="activeItem">Services</NavLink>
-        
+        <NavLink to="/logout"className="listItem" activeClassName="activeItem">Logout</NavLink>
     </div>
     {/* <NavLink to="/signin"className="listItem" activeClassName="activeItem">SignIn</NavLink>
     <NavLink to="/loginpage"className="listItem" activeClassName="activeItem">LoginPage</NavLink> */}

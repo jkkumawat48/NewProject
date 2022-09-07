@@ -11,7 +11,7 @@ import List from './NewProject/List';
 import Footer from './NewProject/Footer'
 import LoginPage from "./NewProject/LoginPage";
 import Signin from "./NewProject/Signin";
-import SignIn from "./NewProject/Signin";
+import Logout from "./NewProject/Signin";
 import { Switch,Route, useHistory } from "react-router-dom";
   const App=()=>{
     const [token,setToken]= useState(null)
@@ -38,13 +38,13 @@ import { Switch,Route, useHistory } from "react-router-dom";
       <Switch>
         <Route exact path="/"component={Home}/>
         <Route path="/about"component={About}/>
-        {/* <Route path="/signin"component={Signin}/> */}
         <Route path="/services"component={Services}/>
         <Route path="/context"component={Context}/>
         <Route path="/policy"component={Policy}/>
         <Route path="/Error" component={Error}/>
         <Route path="/LoginPage" component={LoginPage}/>
         <Route path="/Signin" component={Signin}/>
+        <Route path="/Logout"component={Logout}/>
       </Switch>
       <Footer/>
       

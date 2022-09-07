@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import '../CSS/Login.css';
+
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import img1 from "../Images/img1.jpeg";
@@ -16,21 +18,31 @@ const LoginPage = ({ handleToken, userActiveLogin }) => {
   };
   const handlesubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("token", data.name);
-    setData({ name: "", email: "", password: "" });
-    handleToken();
+    // setData({ name: "", email: "", password: "" });
     const { name, email, password } = data;
     if (name == "") {
       alert("name field is required");
-    } else if (email == "") {
-      alert("email is required");
-    } else if (!email.includes("@")) {
-      alert("please enter valid email address");
-    } else if (password == "") {
-      alert("password filed is required");
-    } else if (password.length < 5) {
-      alert("password length greater five");
+      return
     }
+     if (email == "") {
+      alert("email is required");
+      return
+    } 
+     if (!email.includes("@")) {
+      alert("please enter valid email address");
+      return
+    } 
+     if (password == "") {
+      alert("password filed is required");
+      return
+    } 
+     if (password.length < 5) {
+      alert("password length greater five");
+      return
+      
+    }
+    localStorage.setItem("token", data.name);
+    handleToken();
     console.log("data added successfully");
     localStorage.setItem("user you tube", JSON.stringify([...user, data]));
   };

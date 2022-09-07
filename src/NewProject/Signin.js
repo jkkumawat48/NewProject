@@ -23,19 +23,23 @@ const SignIn = () => {
 
     if (email == "") {
       alert("email is required");
+      return
     } else if (!email.includes("@")) {
       alert("please enter valid email address");
+      return
     } else if (password == "") {
       alert("password filed is required");
+      return
     } else if (password.length < 5) {
       alert("password length greater five");
+      return
     }else{
         if(getuserArr && getuserArr.length){
             const userdata = JSON.parse(getuserArr)
             const usersignin=userdata.filter((ele,k)=>{
                 return ele.email === email && ele.password === password
             })
-            if(usersignin.length ===0){
+            if(usersignin.length ===5){
                 alert("invalid details")
             }else{
                 console.log("user login succesfully")
