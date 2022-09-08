@@ -5,12 +5,18 @@ import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import img1 from "../Images/img1.jpeg";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Alert } from "bootstrap";
 // import SignIn from "./Signin";
 // import Home from './Home';
 const LoginPage = ({ handleToken, userActiveLogin }) => {
   const history = useHistory();
   const [data, setData] = useState({ name: "", email: "", password: "" });
   const [user, setUser] = useState([]);
+  const [error, setError]=useState({
+    status: false,
+    msg:"",
+    type:""
+  })
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
@@ -86,7 +92,9 @@ const LoginPage = ({ handleToken, userActiveLogin }) => {
             <button>Click</button>
           </div>
         </form>
-
+<NavLink to="/">Forgot Password ?</NavLink>
+{/* <Alert>All Field are Required</Alert> */}
+<alert severity='error.type'> All Field are required</alert>
         <p className="mt-3">
           Already Have An Account
           <button onClick={() => userActiveLogin()}>

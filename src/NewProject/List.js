@@ -1,12 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
 import logo from '../Images/logo.jpg';
-import { NavLink } from "react-router-dom";
+import { NavLink,useHistory } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import PhoneIcon from '@mui/icons-material/Phone';
 import '../CSS/ListStyle.css';
 import LoginPage from "./LoginPage";
+import { NavDropdown } from "react-bootstrap";
+import userEvent from "@testing-library/user-event";
 const List=()=>{
+    const [user,setUser]= useState(null)
+const history=useHistory();
+    const name =JSON.parse(localStorage.getItem('user_signin'))
+    console.log('user_signin')
+    const logout=()=>{
+        const token=localStorage.removeItem('user_signin')
+        history.push('/LoginPage')
+      }
+    // function logout(){
+    //     localStorage.clear();
+    //     history.push('/register')
+    // }
+    
     return(
         <>
 <header>
@@ -16,20 +32,35 @@ const List=()=>{
 </div>
 <nav>
     <div className="list">
-        
+       
+       
         <NavLink exact to="/" className="listItem" activeClassName="activeItem">Home</NavLink>
         <NavLink to="/about"className="listItem" activeClassName="activeItem">About</NavLink>
         <NavLink to="/context"className="listItem" activeClassName="activeItem">Context</NavLink>
         <NavLink to="/policy"className="listItem" activeClassName="activeItem">Policy</NavLink>
         <NavLink to="/services"className="listItem" activeClassName="activeItem">Services</NavLink>
-        <NavLink to="/logout"className="listItem" activeClassName="activeItem">Logout</NavLink>
+        
+    
+        
+            
+        <NavLink to="/logout" className="listItem" activeClassName="activeItem" >
+        <NavDropdown title={user && user.name}>
+<NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+<NavDropdown.Item>Profile</NavDropdown.Item>
+        </NavDropdown>
+        </NavLink>
+        
+        
+        
+        
+
+        
     </div>
-    {/* <NavLink to="/signin"className="listItem" activeClassName="activeItem">SignIn</NavLink>
-    <NavLink to="/loginpage"className="listItem" activeClassName="activeItem">LoginPage</NavLink> */}
+    
 </nav>
 <div className="icon">
+
 <SearchIcon />
-{/* <p className="mt-3">Already Have An Account<span><NavLink to="/SignIn">SignIn</NavLink></span></p> */}
 <PermIdentityIcon/>
 <PhoneIcon/>
 
