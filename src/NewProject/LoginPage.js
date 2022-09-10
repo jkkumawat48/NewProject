@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from "react";
-import '../CSS/Login.css';
+import "../CSS/Login.css";
 
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import img1 from "../Images/img1.jpeg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Alert } from "bootstrap";
+
 // import SignIn from "./Signin";
 // import Home from './Home';
 const LoginPage = ({ handleToken, userActiveLogin }) => {
-  const history = useHistory();
   const [data, setData] = useState({ name: "", email: "", password: "" });
-  const [user, setUser] = useState([]);
-  const [error, setError]=useState({
-    status: false,
-    msg:"",
-    type:""
-  })
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
-    // console.log(name,value)
   };
+
   const handlesubmit = (e) => {
     e.preventDefault();
-    // setData({ name: "", email: "", password: "" });
     const { name, email, password } = data;
     if (name == "") {
       alert("name field is required");
@@ -45,18 +37,13 @@ const LoginPage = ({ handleToken, userActiveLogin }) => {
      if (password.length < 5) {
       alert("password length greater five");
       return
-      
     }
-    localStorage.setItem("token", data.name);
-    handleToken();
-    console.log("data added successfully");
-    localStorage.setItem("user you tube", JSON.stringify([...user, data]));
+    if (name) {
+      localStorage.setItem("userLogin", data.name);
+      handleToken();
+    }
   };
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      history.push("/add");
-    }
-  }, []);
+
   return (
     <div className="container mt-3">
       {/* <SignIn/> */}
@@ -92,20 +79,6 @@ const LoginPage = ({ handleToken, userActiveLogin }) => {
             <button>Click</button>
           </div>
         </form>
-<NavLink to="/">Forgot Password ?</NavLink>
-{/* <Alert>All Field are Required</Alert> */}
-<alert severity='error.type'> All Field are required</alert>
-        <p className="mt-3">
-          Already Have An Account
-          <button onClick={() => userActiveLogin()}>
-            <span>SignIn</span>
-          </button>
-        </p>
-        <div className="right_data">
-          <div className="sign_img">
-            <img src="./img1.jpeg" alt="" />
-          </div>
-        </div>
       </section>
     </div>
   );
